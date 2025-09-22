@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#ff69b4">
+  <title>Barbie no Micromundo — Jogo Mobile Educativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffeef8;
+      --card:#fff;
+      --accent:#ff69b4;
+      --muted:#ffb6da;
+      --text:#3a1f3a;
+      --correct-border:#4CAF50;
+      --correct-bg:#e8f5e9;
+      --wrong-border:#F44336;
+      --wrong-bg:#ffebee;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 20px;
+    }
+    *{box-sizing:border-box;font-family:'Inter', system-ui, Arial, sans-serif; -webkit-tap-highlight-color: transparent;}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);display:flex;flex-direction:column;min-height:100vh;padding:var(--spacing-sm);font-size:1rem;}
+    .app{width:100%;max-width:100%;background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(250,105,176,0.15);overflow:hidden;}
+    header{display:flex;flex-wrap:wrap;align-items:center;gap:var(--spacing-md);padding:var(--spacing-lg);background:linear-gradient(90deg,var(--accent),#ffd1ea);color:white;position:relative;}
+    header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="80" r="1.5" fill="rgba(255,255,255,0.3)"/></svg>');background-size:cover;opacity:0.1;}
+    header h1{margin:0;flex:1;font-size:1.5rem;font-weight:700;}
+    .main{display:grid;grid-template-columns:1fr;gap:var(--spacing-md);padding:var(--spacing-lg);}
+    .panel{background:linear-gradient(180deg,#fff,#fff0);border-radius:10px;padding:var(--spacing-md);min-height:200px;box-shadow:0 2px 8px rgba(0,0,0,0.05);overflow-y:auto;}
+    .sidebar .mission{background:var(--bg);padding:var(--spacing-md);border-radius:8px;margin-bottom:var(--spacing-sm);font-size:0.9rem;cursor:pointer;transition:opacity 0.3s ease, background-color 0.3s ease; min-height:48px; display:flex;align-items:center;}
+    .sidebar .mission.locked{opacity:0.5;cursor:not-allowed;}
+    .sidebar .mission.active{background-color: var(--muted);}
+    .sidebar .mission.completed{background-color: var(--correct-bg); border: 1px solid var(--correct-border); opacity: 0.8;}
+    .barbie-evolution{text-align:center;margin-top:var(--spacing-md);}
+    .barbie-img{max-width:100%;height:100px;border-radius:10px;box-shadow:0 4px 12px rgba(255,105,176,0.2);transition:opacity 0.5s ease; object-fit:cover;}
+    .barbie-img.fade-in{opacity:1;}
+    .barbie-img.fade-out{opacity:0;}
+    .btn{display:block;width:100%;padding:var(--spacing-md);border-radius:10px;background:var(--accent);color:white;text-decoration:none;cursor:pointer;border:none;font-weight:600;transition:background-color 0.2s ease; min-height:48px; font-size:1rem;}
+    .btn:hover:not(:disabled), .btn:active:not(:disabled){background-color:#e05a9e;}
+    .btn:disabled{opacity:0.6;cursor:not-allowed;}
+    .small{font-size:0.85rem;color:#6b465f}
+    .question{font-weight:600;margin-bottom:var(--spacing-md);font-size:1.1rem;}
+    .question-image{max-width:100%;height:auto;border-radius:8px;margin-bottom:var(--spacing-md);box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:opacity 0.3s ease; display:block;}
+    .answers{display:flex;flex-direction:column;gap:var(--spacing-sm)}
+    .answer{padding:var(--spacing-lg);border-radius:10px;border:1px solid var(--muted);background:white;cursor:pointer;transition:background-color 0.2s ease, border-color 0.2s ease; min-height:50px; display:flex;align-items:center; word-break:break-word;}
+    .answer:hover, .answer:active{background-color:#fdf0f6;}
+    .answer.selected{border-color:var(--accent);background-color:#fff5fa;}
+    .answer.correct{border-color:var(--correct-border);background-color:var(--correct-bg);font-weight:600;}
+    .answer.wrong{border-color:var(--wrong-border);background-color:var(--wrong-bg);font-weight:600;}
+    .feedback-message{margin-top:var(--spacing-md);padding:var(--spacing-md);border-radius:8px;font-size:0.9rem;line-height:1.5; word-break:break-word;}
+    .feedback-correct{background-color:var(--correct-bg);color:var(--correct-border);border:1px solid var(--correct-border);}
+    .feedback-wrong{background-color:var(--wrong-bg);color:var(--wrong-border);border:1px solid var(--wrong-border);}
+    footer{padding:var(--spacing-md);text-align:center;color:#6b465f;font-size:0.8rem;}
+    .score{font-weight:700;color:var(--accent);font-size:1rem;}
+    .hidden{display:none;}
+    .log-entry{margin-bottom:var(--spacing-sm);padding:var(--spacing-sm) 0;border-bottom:1px dotted #f0f0f0; font-size:0.85rem;}
+    .progress-bar{background:var(--muted);height:8px;border-radius:4px;margin:var(--spacing-sm) 0;overflow:hidden;}
+    .progress-fill{background:var(--accent);height:100%;transition:width 0.3s ease;border-radius:4px;}
+    .hint-btn{margin:var(--spacing-sm) 0;padding:var(--spacing-md);font-size:0.9rem;background:#4CAF50;color:white;border:none;border-radius:8px;cursor:pointer; min-height:48px; width:100%;}
+    .hint-btn:disabled{opacity:0.5;cursor:not-allowed;}
+    /* Desktop: Grid lateral */
+    @media (min-width: 769px){
+      body{padding:var(--spacing-lg);}
+      .app{width:980px;max-width:100%;}
+      .main{grid-template-columns:360px 1fr;gap:var(--spacing-lg);}
+      .btn{width:auto; display:inline-block; padding:var(--spacing-md) var(--spacing-lg);}
+      .hint-btn{width:auto; margin-left:var(--spacing-md); margin:var(--spacing-sm) 0;}
+      .answer{padding:var(--spacing-md); min-height:auto;}
+      header{flex-wrap:nowrap;}
+      .barbie-img{height:120px;}
+      header h1{font-size:1.8rem;}
+    }
+    /* Tablet Landscape */
+    @media (min-width: 481px) and (max-width: 768px) and (orientation: landscape){
+      .main{grid-template-columns:300px 1fr;}
+      .sidebar .mission{min-height:40px;}
+    }
+    /* Mobile Portrait */
+    @media (max-width: 480px){
+      body{font-size:0.95rem; padding:var(--spacing-sm);}
+      header{padding:var(--spacing-md); flex-direction:column; text-align:center; gap:var(--spacing-sm);}
+      header h1{font-size:1.3rem;}
+      .panel{padding:var(--spacing-md); margin-bottom:var(--spacing-sm);}
+      .barbie-img{height:80px;}
+      .question{font-size:1rem;}
+      .answer{padding:var(--spacing-lg 1.2rem); min-height:55px;}
+      .btn, .hint-btn{padding:var(--spacing-lg); font-size:0.95rem;}
+      .progress-bar{height:6px;}
+      footer{padding:var(--spacing-sm); font-size:0.75rem;}
+      .sidebar .mission{padding:var(--spacing-md); font-size:0.85rem; min-height:50px;}
+    }
+    /* Evita zoom em double-tap em elementos interativos */
+    .answer, .btn, .hint-btn { touch-action: manipulation; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <img id="headerBarbie" src="https://i.pinimg.com/originals/4d/18/35/4d18359d57d625cdbe730f442d5061da.jpg" alt="Barbie Cientista Iniciante" style="width:70px;height:70px;border-radius:10px;background:rgba(255,255,255,0.15);object-fit:cover;transition:opacity 0.5s ease;">
+      <div>
+        <h1>Barbie no Micromundo</h1>
+        <div class="small">Explore o micromundo no seu celular!</div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="sidebar">
+        <div class="panel">
+          <h3>Missões (Progresso: <span id="progressCount">0</span>/15)</h3>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%;"></div></div>
+          <div class="mission" id="m1">1. Reino dos Fungos</div>
+          <div class="mission locked" id="m2">2. Microscópio Encantado</div>
+          <div class="mission locked" id="m3">3. Micromundo</div>
+          <div class="mission locked" id="m4">4. Caçadora de Micróbios</div>
+          <div class="mission locked" id="m5">5. Laboratório Encantado</div>
+          <div class="mission locked" id="m6">6. Fungos do Bem e do Mal</div>
+          <div class="mission locked" id="m7">7. Energia do Micromundo</div>
+          <div class="mission locked" id="m8">8. A Célula Secreta</div>
+          <div class="mission locked" id="m9">9. O Grande Desafio Viral</div>
+          <div class="mission locked" id="m10">10. Solução Final</div>
+          <div class="mission locked" id="m11">11. Reprodução Mágica</div>
+          <div class="mission locked" id="m12">12. Cuidados no Laboratório</div>
+          <div class="mission locked" id="m13">13. Fungos Patogênicos</div>
+          <div class="mission locked" id="m14">14. Metabolismo Avançado</div>
+          <div class="mission locked" id="m15">15. Aplicações Industriais</div>
+
+          <div style="margin-top:var(--spacing-md)">
+            <button class="btn" id="startBtn">Começar Missão 1</button>
+          </div>
+
+          <div style="margin-top:var(--spacing-md);font-size:0.9rem">
+            Pontuação: <span class="score" id="score">0</span><br>
+            Cristais: <span id="cristais">0</span> • Lentes: <span id="lentes">0</span>
+          </div>
+        </div>
+
+        
+
+        <div class="panel" style="margin-top:12px">
+          <h4>Evolução da Cientista Barbie</h4>
+          <div class="barbie-evolution">
+            <img id="sidebarBarbie" class="barbie-img fade-in" src="https://i.pinimg.com/originals/4d/18/35/4d18359d57d625cdbe730f442d5061da.jpg" alt="Barbie Iniciante">
+            <p class="small" id="barbieStatus">Nível Iniciante: Pronta para explorar!</p>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:12px">
+          <h4>Instruções Rápidas</h4>
+          <ol style="padding-left:18px;margin:8px 0">
+            <li>Responda as perguntas e colete recompensas.</li>
+            <li>Cada acerto = +10 pontos. Use cristais para dicas!</li>
+            <li>Evolua a Barbie completando missões (nova roupa a cada 3!)</li>
+            <li>Complete as 15 missões para o grande final.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="panel" id="gameArea">
+          <div id="intro">
+            <h2>Bem-vinda, Cientista Barbie!</h2>
+            <p class="small">As margaridas estão em perigo! Evolua sua aparência e conhecimentos para salvá-las. Comece a jornada!</p>
+          </div>
+
+          <div id="questionArea" class="hidden">
+            <div id="missionTitle" style="display:flex;justify-content:space-between;align-items:center">
+              <h3></h3>
+              <div class="small">Missão: <span id="missNum">1</span></div>
+            </div>
+
+            <div style="margin-top:10px">
+              <img id="questionImage" class="question-image hidden" src="" alt="Imagem da Pergunta">
+              <div class="question" id="qtext">Pergunta</div>
+              <div class="answers" id="answers"></div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <button class="btn" id="nextBtn">Próxima Pergunta</button>
+              <button class="hint-btn" id="hintBtn" disabled>Dica (1 Cristal)</button>
+              <div class="small">Erros permitidos por missão: <span id="errorCount">0</span>/3</div>
+            </div>
+
+            <div class="feedback-message hidden" id="feedback"></div>
+          </div>
+
+          <div id="endArea" class="hidden">
+            <h2>Concluído!</h2>
+            <p class="small" id="endText"></p>
+            <button class="btn" id="restartBtn">Reiniciar Jogo</button>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:12px">
+          <h4>Registro de Descobertas</h4>
+          <div id="log" style="font-size:13px;color:#6b465f;max-height:200px;overflow-y:auto;"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>Protótipo criado com conceitos de <span style="font-weight:700">fungos, microscopia e microbiologia</span>.
+
+  <script>
+   const missions = [
+  {
+    id:1, title:'Reino dos Fungos', reward:'💎 Cristais de Quitina',
+    qs:[
+      {q:'Qual é o principal polímero da parede celular dos fungos?', a:['Celulose','Quitina','Peptidoglicano','Quitossoma'], correct:1, explain:'Fungos têm parede celular de quitina.'},
+      {q:'Qual fungo é usado para produzir penicilina?', a:['Aspergillus','Penicillium notatum','Saccharomyces','Amanita'], correct:1, explain:'Penicillium notatum produz penicilina.'},
+      {q:'Candida albicans pode apresentar qual dimorfismo?', a:['Somente levedura','Levedura/filamentoso','Somente filamentos','Sem alteração'], correct:1, explain:'Candida é dimórfica: levedura em 37°C e bolor em 25°C.'}
+    ]
+  },
+  {
+    id:2, title:'Microscópio Encantado', reward:'🔬 Lentes Mágicas',
+    qs:[
+      {q:'Qual ajuste usamos para focagem grosseira?', a:['Micrométrico','Macrométrico','Diafragma','Condensador'], correct:1, explain:'Ajuste macrométrico faz a focagem inicial.'},
+      {q:'Para usar objetiva de imersão, o que é necessário?', a:['Água','Óleo de cedro','Álcool 70%','Glicerol'], correct:1, explain:'Usa-se óleo de cedro para objetiva de imersão.'},
+      {q:'O que regula a intensidade luminosa no campo?', a:['Condensador','Revólver','Diafragma Iris','Platina'], correct:2, explain:'O Diafragma de Iris regula a intensidade.'}
+    ]
+  },
+  {
+    id:3, title:'Micromundo', reward:'✨ Pó de Micélio',
+    qs:[
+      {q:'Leveduras são geralmente:', a:['Unicelulares','Pluricelulares','Procariontes','Autótrofas'], correct:0, explain:'Leveduras são unicelulares.'},
+      {q:'Fungos são, em geral, autótrofos ou heterótrofos?', a:['Autótrofos','Heterótrofos','Mixotrofos','Quimioautótrofos'], correct:1, explain:'Fungos são heterótrofos.'},
+      {q:'Qual grupo realiza fotossíntese?', a:['Fungos','Algas','Leveduras','Protozoários'], correct:1, explain:'Algas fotossintetizam.'}
+    ]
+  },
+  {
+    id:4, title:'Caçadora de Micróbios', reward:'📚 Livros de Taxonomia',
+    qs:[
+      {q:'As algas unicelulares pertencem a qual reino?', a:['Fungi','Monera','Protista','Animalia'], correct:2, explain:'Algas unicelulares estão no Reino Protista.'},
+      {q:'As arqueobactérias são procariontes ou eucariontes?', a:['Procariontes','Eucariontes','Nenhum','Ambos'], correct:0, explain:'Arqueobactérias são procariontes.'},
+      {q:'Cogumelos pertencem a qual reino?', a:['Plantae','Fungi','Protista','Monera'], correct:1, explain:'Cogumelos fazem parte do Reino Fungi.'}
+    ]
+  },
+  {
+    id:5, title:'Laboratório Encantado', reward:'🔧 Ferramentas de Microscopia',
+    qs:[
+      {q:'Qual parte do microscópio segura a lâmina?', a:['Platina','Condensador','Base','Revólver'], correct:0, explain:'A platina mantém a lâmina fixa para observação.'},
+      {q:'Qual o nome do ajuste fino de foco?', a:['Macrométrico','Micrométrico','Iris','Charriot'], correct:1, explain:'O ajuste micrométrico faz a focalização fina.'},
+      {q:'Qual a função do condensador?', a:['Aumentar a imagem','Concentrar a luz','Segurar a ocular','Girar as objetivas'], correct:1, explain:'O condensador concentra/distribui a luz no campo visual.'}
+    ]
+  },
+  {
+    id:6, title:'Fungos do Bem e do Mal', reward:'🍄 Medalhas Micóticas',
+    qs:[
+      {q:'O Shimeji é um fungo...', a:['Comestível','Patogênico','Venenoso','Nenhum'], correct:0, explain:'O Shimeji é comestível.'},
+      {q:'A Amanita phalloides é...', a:['Comestível','Venenosa','Medicinal','Fermentadora'], correct:1, explain:'Amanita phalloides é venenosa.'},
+      {q:'O fungo usado para fermentar pão e cerveja é...', a:['Penicillium','Candida','Saccharomyces cerevisiae','Aspergillus'], correct:2, explain:'Saccharomyces cerevisiae realiza fermentação alcoólica.'}
+    ]
+  },
+  {
+    id:7, title:'Energia do Micromundo', reward:'⚡ Energia Mágica',
+    qs:[
+      {q:'Autótrofos fotossintetizantes usam...', a:['Matéria orgânica pronta','Luz solar, água e CO₂','Somente calor','Proteínas de outros organismos'], correct:1, explain:'Fotossintetizantes usam luz, água e CO₂.'},
+      {q:'Heterótrofos dependem de...', a:['Produzir seu alimento','Matéria orgânica de outros seres','Somente CO₂','Clorofila'], correct:1, explain:'Heterótrofos consomem matéria orgânica de outros organismos.'},
+      {q:'A fermentação é um metabolismo...', a:['Aeróbico','Anaeróbico','Fotossintético','Quimiossintético'], correct:1, explain:'Fermentação é um processo anaeróbico.'}
+    ]
+  },
+  {
+    id:8, title:'A Célula Secreta', reward:'🧬 Códigos Genéticos',
+    qs:[
+      {q:'Diferença principal procarionte vs eucarionte?', a:['Parede celular','Tamanho','Núcleo delimitado por membrana','Reprodução'], correct:2, explain:'Eucariontes têm núcleo e organelas; procariontes não.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Prokaryote_vs_eukaryote.svg/300px-Prokaryote_vs_eukaryote.svg.png'},
+      {q:'Bactérias e arqueias são?', a:['Eucariontes (complexas)','Procariontes (simples)','Multicelulares','Autótrofas obrigatórias'], correct:1, explain:'Procariontes têm DNA circular.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Bacterial_cell_structure.svg/300px-Bacterial_cell_structure.svg.png'},
+      {q:'Células de fungos/animais são?', a:['Procariontes','Eucariontes (com organelas)','Acelulares','Unicelulares sempre'], correct:1, explain:'Eucariontes têm núcleo e mitocôndrias.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Animal_cell_structure.svg/300px-Animal_cell_structure.svg.png'}
+    ]
+  },
+  {
+    id:9, title:'O Grande Desafio Viral', reward:'🦠 Antivírus Mágico',
+    qs:[
+      {q:'Por que vírus não são considerados seres vivos?', a:['São muito pequenos','Não possuem genoma','Acelulares e dependem de hospedeiros','Não causam doenças'], correct:2, explain:'Vírus são acelulares e só se replicam dentro de células hospedeiras.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Virus_structure.svg/300px-Virus_structure.svg.png'},
+      {q:'Vírus possuem qual material genético?', a:['Somente DNA','Somente RNA','DNA ou RNA, nunca ambos','Não possuem material genético'], correct:2, explain:'Vírus podem ter DNA ou RNA, mas nunca os dois simultaneamente.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Virus_DNA_RNA.svg/300px-Virus_DNA_RNA.svg.png'},
+      {q:'Como vírus se replicam?', a:['Dividindo-se sozinhos','Usando células hospedeiras','Por fotossíntese','Por fermentação'], correct:1, explain:'Vírus utilizam células hospedeiras para replicar seu genoma.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Virus_lifecycle.svg/300px-Virus_lifecycle.svg.png'}
+    ]
+  }
+];
+    // ------------- LÓGICA DO JOGO -------------
+    let currentMission = 0;
+    let qIndex = 0;
+    let score = 0;
+    let cristais = 0;
+    let lentes = 0;
+    let errors = 0;
+    let answerSelected = false;
+
+    const startBtn = document.getElementById('startBtn');
+    const questionArea = document.getElementById('questionArea');
+    const intro = document.getElementById('intro');
+    const qtext = document.getElementById('qtext');
+    const answersEl = document.getElementById('answers');
+    const missionTitle = document.querySelector('#missionTitle h3');
+    const missNum = document.getElementById('missNum');
+    const nextBtn = document.getElementById('nextBtn');
+    const scoreEl = document.getElementById('score');
+    const cristaisEl = document.getElementById('cristais');
+    const lentesEl = document.getElementById('lentes');
+    const feedback = document.getElementById('feedback');
+    const log = document.getElementById('log');
+    const endArea = document.getElementById('endArea');
+    const endText = document.getElementById('endText');
+    const restartBtn = document.getElementById('restartBtn');
+
+    // Inicial: next desabilitado
+    nextBtn.disabled = true;
+
+    // startBtn agora é dinâmico: usa dataset.next quando presente
+    startBtn.addEventListener('click', ()=>{
+      const next = startBtn.dataset.next;
+      if(next){
+        startMission(parseInt(next,10));
+      } else {
+        startMission(1);
+      }
+    });
+
+    nextBtn.addEventListener('click', ()=>{
+      nextQuestion();
+    });
+    restartBtn.addEventListener('click', ()=>{ location.reload(); });
+
+    function startMission(n){
+      // n é 1-based
+      currentMission = n-1;
+      qIndex = 0;
+      errors = 0;
+      answerSelected = false;
+      intro.classList.add('hidden');
+      endArea.classList.add('hidden');
+      questionArea.classList.remove('hidden');
+      missionTitle.textContent = missions[currentMission].title;
+      missNum.textContent = missions[currentMission].id;
+      // reset opacidade das missões e destacar a atual
+      document.querySelectorAll('.mission').forEach(m => m.style.opacity = 1);
+      const el = document.getElementById('m'+(currentMission+1));
+      if(el) el.style.opacity = 0.6;
+      // esconder botão principal enquanto missão ativa
+      startBtn.style.display = 'none';
+      logEntry('Iniciada missão: '+missions[currentMission].title);
+      showQuestion();
+    }
+
+    function showQuestion(){
+      const q = missions[currentMission].qs[qIndex];
+      qtext.textContent = q.q;
+      answersEl.innerHTML = '';
+      answerSelected = false;
+      nextBtn.disabled = true;
+      feedback.textContent = '';
+      q.a.forEach((opt,i)=>{
+        const btn = document.createElement('div');
+        btn.className='answer';
+        btn.textContent = opt;
+        btn.addEventListener('click', ()=>selectAnswer(i,btn));
+        answersEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(i,el){
+      const q = missions[currentMission].qs[qIndex];
+      const buttons = Array.from(document.querySelectorAll('.answer'));
+      buttons.forEach(b=>b.style.pointerEvents='none');
+      answerSelected = true;
+      nextBtn.disabled = false;
+      if(i===q.correct){
+        el.classList.add('correct');
+        score += 10; scoreEl.textContent = score;
+        // rewards
+        if(currentMission===0) { cristais += 1; cristaisEl.textContent = cristais}
+        if(currentMission===1) { lentes += 1; lentesEl.textContent = lentes}
+        feedback.textContent = 'Correto! '+q.explain;
+        logEntry('Acertou: '+q.q);
+      } else {
+        el.classList.add('wrong');
+        errors += 1;
+        feedback.textContent = 'Errado. '+q.explain;
+        logEntry('Errou: '+q.q);
+      }
+    }
+
+    function nextQuestion(){
+      // evitar avançar sem resposta (fallback)
+      if(!answerSelected){
+        feedback.textContent = 'Selecione uma resposta antes de continuar.';
+        return;
+      }
+
+      const mission = missions[currentMission];
+      qIndex +=1;
+
+      if(errors>=3){
+        // mission failed
+        feedback.textContent = 'Você cometeu muitos erros. Reinicie a missão.';
+        logEntry('Missão falhada: '+mission.title);
+        questionArea.classList.add('hidden');
+        endArea.classList.remove('hidden');
+        endText.textContent = 'Missão falhada. Tente novamente para ajudar Barbie a salvar o laboratório.';
+        startBtn.style.display = 'inline-block';
+        startBtn.textContent = 'Tentar Novamente';
+        startBtn.dataset.next = (currentMission+1).toString(); // retry same mission (1-based)
+        return;
+      }
+
+      if(qIndex>=mission.qs.length){
+        // mission complete
+        score += 5; scoreEl.textContent = score; // bonus
+        logEntry('Missão concluída: '+mission.title);
+        questionArea.classList.add('hidden');
+        endArea.classList.remove('hidden');
+        // start next or finish (AGUARDANDO clique do usuário)
+        if(currentMission < missions.length-1){
+          endText.textContent = 'Missão concluída! Clique em "Continuar" para iniciar a próxima missão.';
+          startBtn.style.display = 'inline-block';
+          startBtn.textContent = 'Continuar';
+          startBtn.dataset.next = (currentMission+2).toString(); // next mission 1-based
+        } else {
+          endText.textContent = 'Parabéns! Barbie salvou o laboratório. Pontos: '+score+'. Cristais: '+cristais+'. Lentes: '+lentes;
+          startBtn.style.display = 'inline-block';
+          startBtn.textContent = 'Jogar Novamente';
+          startBtn.dataset.next = '1';
+        }
+        return;
+      }
+      showQuestion();
+    }
+
+    function logEntry(text){
+      const time = new Date().toLocaleTimeString();
+      log.innerHTML = `<div>[${time}] ${text}</div>`+log.innerHTML;
+    }
+  </script>
+</body>
+</html>
