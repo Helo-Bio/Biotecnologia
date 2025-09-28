@@ -6,6 +6,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#ff69b4">
+
+  <!-- Favicon (Logo na Aba) - Atualizado para 1-9652afda.ico -->
+  <link rel="icon" href="img/1-9652afda.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="img/1-9652afda.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/1-9652afda.ico">
+  <!-- Fim das tags de Favicon -->
+
   <title>Barbie no Micromundo — Jogo Mobile Educativo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -99,7 +106,8 @@
 <body>
   <div class="app">
     <header>
-      <img id="headerBarbie" src="https://i.pinimg.com/originals/4d/18/35/4d18359d57d625cdbe730f442d5061da.jpg" alt="Barbie Cientista Iniciante" style="width:70px;height:70px;border-radius:10px;background:rgba(255,255,255,0.15);object-fit:cover;transition:opacity 0.5s ease;">
+      <!-- Caminho da imagem da Barbie no header corrigido para 'img/' -->
+      <img id="headerBarbie" src="img/4d18359d57d625cdbe730f442d5061da.jpg" alt="Barbie Cientista Iniciante" style="width:70px;height:70px;border-radius:10px;background:rgba(255,255,255,0.15);object-fit:cover;transition:opacity 0.5s ease;">
       <div>
         <h1>Barbie no Micromundo</h1>
         <div class="small">Explore o micromundo no seu celular!</div>
@@ -142,7 +150,8 @@
         <div class="panel" style="margin-top:12px">
           <h4>Evolução da Cientista Barbie</h4>
           <div class="barbie-evolution">
-            <img id="sidebarBarbie" class="barbie-img fade-in" src="https://i.pinimg.com/originals/4d/18/35/4d18359d57d625cdbe730f442d5061da.jpg" alt="Barbie Iniciante">
+            <!-- Caminho da imagem da Barbie na sidebar corrigido para 'img/' -->
+            <img id="sidebarBarbie" class="barbie-img fade-in" src="img/Barbie_Quimica_Base_Jaleco_Branco.png" alt="Barbie Iniciante">
             <p class="small" id="barbieStatus">Nível Iniciante: Pronta para explorar!</p>
           </div>
         </div>
@@ -227,7 +236,7 @@
     qs:[
       {q:'Leveduras são geralmente:', a:['Unicelulares','Pluricelulares','Procariontes','Autótrofas'], correct:0, explain:'Leveduras são unicelulares.', image:'img/Comparacao_Especies_Leveduras.jpg'},
       {q:'Fungos são, em geral, autótrofos ou heterótrofos?', a:['Autótrofos','Heterótrofos','Mixotrofos','Quimioautótrofos'], correct:1, explain:'Fungos são heterótrofos.', image:'img/Estruturas_Reprodutivas_Fungos_PT.jpg'},
-      {q:'Qual grupo realiza fotossíntese?', a:['Fungos','Algas','Leveduras','Protozoários'], correct:1, explain:'Algas fotossintetizam.'}
+      {q:'Qual grupo realiza fotossíntese?', a:['Fungos','Algas','Leveduras','Protozoários'], correct:1, explain:'Algas fotossintetizam.', image:'img/algas.jpg'}
     ]
   },
   {
@@ -257,34 +266,34 @@
   {
     id:7, title:'Energia do Micromundo', reward:'⚡ Energia Mágica',
     qs:[
-      {q:'Autótrofos fotossintetizantes usam...', a:['Matéria orgânica pronta','Luz solar, água e CO₂','Somente calor','Proteínas de outros organismos'], correct:1, explain:'Fotossintetizantes usam luz, água e CO₂.'},
-      {q:'Heterótrofos dependem de...', a:['Produzir seu alimento','Matéria orgânica de outros seres','Somente CO₂','Clorofila'], correct:1, explain:'Heterótrofos consomem matéria orgânica de outros organismos.'},
-      {q:'A fermentação é um metabolismo...', a:['Aeróbico','Anaeróbico','Fotossintético','Quimiossintético'], correct:1, explain:'Fermentação é um processo anaeróbico.'}
+      {q:'Autótrofos fotossintetizantes usam...', a:['Matéria orgânica pronta','Luz solar, água e CO₂','Somente calor','Proteínas de outros organismos'], correct:1, explain:'Fotossintetizantes usam luz, água e CO₂.', image:'img/fotossintese.jpg'},
+      {q:'Heterótrofos dependem de...', a:['Produzir seu alimento','Matéria orgânica de outros seres','Somente CO₂','Clorofila'], correct:1, explain:'Heterótrofos consomem matéria orgânica de outros organismos.', image:'img/heterotrofos.jpg'},
+      {q:'A fermentação é um metabolismo...', a:['Aeróbico','Anaeróbico','Fotossintético','Quimiossintético'], correct:1, explain:'Fermentação é um processo anaeróbico.', image:'img/fermentacao.jpg'}
     ]
   },
   {
     id:8, title:'A Célula Secreta', reward:'🧬 Códigos Genéticos',
     qs:[
-      {q:'Diferença principal procarionte vs eucarionte?', a:['Parede celular','Tamanho','Núcleo delimitado por membrana','Reprodução'], correct:2, explain:'Eucariontes têm núcleo e organelas; procariontes não.'},
-      {q:'Bactérias e arqueias são?', a:['Eucariontes (complexas)','Procariontes (simples)','Multicelulares','Autótrofas obrigatórias'], correct:1, explain:'Procariontes têm DNA circular.'},
+      {q:'Diferença principal procarionte vs eucarionte?', a:['Parede celular','Tamanho','Núcleo delimitado por membrana','Reprodução'], correct:2, explain:'Eucariontes têm núcleo e organelas; procariontes não.', image:'img/procarionte_eucarionte.jpg'},
+      {q:'Bactérias e arqueias são?', a:['Eucariontes (complexas)','Procariontes (simples)','Multicelulares','Autótrofas obrigatórias'], correct:1, explain:'Procariontes têm DNA circular.', image:'img/bacterias_arqueias.jpg'},
       {q:'Células de fungos/animais são?', a:['Procariontes','Eucariontes (com organelas)','Acelulares','Unicelulares sempre'], correct:1, explain:'Eucariontes têm núcleo e mitocôndrias.', image: 'img/ChatGPT Image 28 de set. de 2025, 19_35_34.png'}
     ]
   },
   {
     id:9, title:'O Grande Desafio Viral', reward:'🦠 Antivírus Mágico',
     qs:[
-      {q:'Por que vírus não são considerados seres vivos?', a:['São muito pequenos','Não possuem genoma','Acelulares e dependem de hospedeiros','Não causam doenças'], correct:2, explain:'Vírus são acelulares e só se replicam dentro de células hospedeiras.'},
-      {q:'Vírus possuem qual material genético?', a:['Somente DNA','Somente RNA','DNA ou RNA, nunca ambos','Não possuem material genético'], correct:2, explain:'Vírus podem ter DNA ou RNA, mas nunca os dois simultaneamente.',},
-      {q:'Como vírus se replicam?', a:['Dividindo-se sozinhos','Usando células hospedeiras','Por fotossíntese','Por fermentação'], correct:1, explain:'Vírus utilizam células hospedeiras para replicar seu genoma.'}
+      {q:'Por que vírus não são considerados seres vivos?', a:['São muito pequenos','Não possuem genoma','Acelulares e dependem de hospedeiros','Não causam doenças'], correct:2, explain:'Vírus são acelulares e só se replicam dentro de células hospedeiras.', image:'img/virus_ser_vivo.jpg'},
+      {q:'Vírus possuem qual material genético?', a:['Somente DNA','Somente RNA','DNA ou RNA, nunca ambos','Não possuem material genético'], correct:2, explain:'Vírus podem ter DNA ou RNA, mas nunca os dois simultaneamente.', image:'img/virus_dna_rna.jpg'},
+      {q:'Como vírus se replicam?', a:['Dividindo-se sozinhos','Usando células hospedeiras','Por fotossíntese','Por fermentação'], correct:1, explain:'Vírus utilizam células hospedeiras para replicar seu genoma.', image:'img/replicacao_viral.jpg'}
     ]
   },
   {
     id:10, title:'Microbiologia Essencial', reward:'🔬 Conhecimento Fundamental',
     qs:[
-      {q:'O que a Microbiologia estuda?', a:['Apenas vírus','Apenas bactérias','Microrganismos, seres vivos microscópicos','Plantas e animais'], correct:2, explain:'A Microbiologia estuda microrganismos, seres vivos de dimensões microscópicas que não podem ser vistos a olho nu.'},
-      {q:'Qual a importância da Microbiologia para a Biotecnologia?', a:['Nenhuma','Fornece ferramentas para soluções inovadoras','Apenas para pesquisa básica','Somente para a indústria alimentícia'], correct:1, explain:'A Microbiologia fornece as ferramentas e o conhecimento essenciais para que a Biotecnologia crie soluções inovadoras para a saúde, o meio ambiente e a indústria.', },
-      {q:'Defina bactérias.', a:['Organismos pluricelulares','Organismos vivos unicelulares','Vírus complexos','Células sem núcleo'], correct:1, explain:'Bactérias são organismos vivos unicelulares.', },
-      {q:'O que são esporos bacterianos?', a:['Células reprodutivas','Um estado de resistência para sobreviver','Bactérias mortas','Fragmentos de DNA'], correct:1, explain:'Esporos bacterianos são um estado de resistência que algumas bactérias assumem para sobreviver.', }
+      {q:'O que a Microbiologia estuda?', a:['Apenas vírus','Apenas bactérias','Microrganismos, seres vivos microscópicos','Plantas e animais'], correct:2, explain:'A Microbiologia estuda microrganismos, seres vivos de dimensões microscópicas que não podem ser vistos a olho nu.', image:'img/microbiologia_estudo.jpg'},
+      {q:'Qual a importância da Microbiologia para a Biotecnologia?', a:['Nenhuma','Fornece ferramentas para soluções inovadoras','Apenas para pesquisa básica','Somente para a indústria alimentícia'], correct:1, explain:'A Microbiologia fornece as ferramentas e o conhecimento essenciais para que a Biotecnologia crie soluções inovadoras para a saúde, o meio ambiente e a indústria.', image:'img/microbiologia_biotecnologia.jpg'},
+      {q:'Defina bactérias.', a:['Organismos pluricelulares','Organismos vivos unicelulares','Vírus complexos','Células sem núcleo'], correct:1, explain:'Bactérias são organismos vivos unicelulares.', image:'img/bacterias_definicao.jpg'},
+      {q:'O que são esporos bacterianos?', a:['Células reprodutivas','Um estado de resistência para sobreviver','Bactérias mortas','Fragmentos de DNA'], correct:1, explain:'Esporos bacterianos são um estado de resistência que algumas bactérias assumem para sobreviver.', image:'img/esporos_bacterianos.jpg'}
     ]
   },
   {
@@ -302,29 +311,29 @@
     qs:[
       {q:'Qual a principal característica da parede celular de bactérias Gram-positivas?', a:['Fina de lipopolissacarídeos','Espessa de peptidoglicano','Ausente','Com ácidos teicoicos e membrana externa'], correct:1, explain:'Gram-positivas possuem parede celular espessa de peptidoglicano.', image:'img/Estrutura_Parede_Celular_Gram_Positivas.jpg'},
       {q:'Bactérias Gram-negativas possuem membrana externa?', a:['Não, nunca','Sim, com lipopolissacarídeos (LPS)','Apenas em algumas espécies','Somente ácidos teicoicos'], correct:1, explain:'Gram-negativas têm membrana externa com lipopolissacarídeos (LPS).', image:'img/Estrutura_Parede_Celular_Gram_Negativas_Nova.jpg'},
-      {q:'Qual a cor das bactérias Gram-positivas após a coloração de Gram?', a:['Rosa/Vermelha','Incolor','Roxa/Azul','Verde'], correct:2, explain:'Gram-positivas coram em roxo/azul.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Gram_stain_positive.jpg/320px-Gram_stain_positive.jpg'},
-      {q:'Qual a cor das bactérias Gram-negativas após a coloração de Gram?', a:['Roxa/Azul','Verde','Rosa/Vermelha','Incolor'], correct:2, explain:'Gram-negativas coram em rosa/vermelha.'},
-      {q:'Qual tipo de bactéria é geralmente mais resistente a antibióticos?', a:['Gram-positivas','Gram-negativas','Ambas igualmente','Nenhuma'], correct:1, explain:'Gram-negativas são mais resistentes a antibióticos devido à sua membrana externa.', }
+      {q:'Qual a cor das bactérias Gram-positivas após a coloração de Gram?', a:['Rosa/Vermelha','Incolor','Roxa/Azul','Verde'], correct:2, explain:'Gram-positivas coram em roxo/azul.', image:'img/gram_positiva_cor.jpg'},
+      {q:'Qual a cor das bactérias Gram-negativas após a coloração de Gram?', a:['Roxa/Azul','Verde','Rosa/Vermelha','Incolor'], correct:2, explain:'Gram-negativas coram em rosa/vermelha.', image:'img/gram_negativa_cor.jpg'},
+      {q:'Qual tipo de bactéria é geralmente mais resistente a antibióticos?', a:['Gram-positivas','Gram-negativas','Ambas igualmente','Nenhuma'], correct:1, explain:'Gram-negativas são mais resistentes a antibióticos devido à sua membrana externa.', image:'img/resistencia_antibioticos.jpg'}
     ]
   },
   {
     id:13, title:'Estrutura Bacteriana', reward:'🔬 Componentes Celulares',
     qs:[
-      {q:'Qual estrutura rígida dá forma e proteção à célula bacteriana?', a:['Membrana Plasmática','Cápsula','Parede Celular','Flagelo'], correct:2, explain:'A Parede Celular é uma estrutura rígida que dá forma e proteção à célula, composta por peptidoglicano.',},
-      {q:'Qual organela é responsável pela síntese de proteínas?', a:['Plasmídeo','Nucleoide','Ribossomos','Mesossomo'], correct:2, explain:'Os Ribossomos são responsáveis pela síntese de proteínas.', },
-      {q:'Qual estrutura confere vantagens adaptativas, como resistência a antibióticos?', a:['Cápsula','Flagelo','Plasmídeo','Inclusões Citoplasmáticas'], correct:2, explain:'Plasmídeos são pequenas moléculas circulares de DNA extra que conferem vantagens adaptativas.', },
-      {q:'Qual a função da Membrana Plasmática em bactérias?', a:['Armazenar reservas','Locomoção','Controlar entrada e saída de substâncias e funções metabólicas','Proteger contra o sistema imunológico'], correct:2, explain:'A Membrana Plasmática controla a entrada e saída de substâncias e é responsável por funções metabólicas como a respiração celular.', },
-      {q:'Qual estrutura é responsável pela locomoção da bactéria?', a:['Cápsula','Flagelo','Pili','Parede Celular'], correct:1, explain:'O Flagelo é uma estrutura filamentosa longa responsável pela locomoção da bactéria.',}
+      {q:'Qual estrutura rígida dá forma e proteção à célula bacteriana?', a:['Membrana Plasmática','Cápsula','Parede Celular','Flagelo'], correct:2, explain:'A Parede Celular é uma estrutura rígida que dá forma e proteção à célula, composta por peptidoglicano.', image:'img/estrutura_bacteriana_parede.jpg'},
+      {q:'Qual organela é responsável pela síntese de proteínas?', a:['Plasmídeo','Nucleoide','Ribossomos','Mesossomo'], correct:2, explain:'Os Ribossomos são responsáveis pela síntese de proteínas.', image:'img/estrutura_bacteriana_ribossomos.jpg'},
+      {q:'Qual estrutura confere vantagens adaptativas, como resistência a antibióticos?', a:['Cápsula','Flagelo','Plasmídeo','Inclusões Citoplasmáticas'], correct:2, explain:'Plasmídeos são pequenas moléculas circulares de DNA extra que conferem vantagens adaptativas.', image:'img/estrutura_bacteriana_plasmideo.jpg'},
+      {q:'Qual a função da Membrana Plasmática em bactérias?', a:['Armazenar reservas','Locomoção','Controlar entrada e saída de substâncias e funções metabólicas','Proteger contra o sistema imunológico'], correct:2, explain:'A Membrana Plasmática controla a entrada e saída de substâncias e é responsável por funções metabólicas como a respiração celular.', image:'img/estrutura_bacteriana_membrana.jpg'},
+      {q:'Qual estrutura é responsável pela locomoção da bactéria?', a:['Cápsula','Flagelo','Pili','Parede Celular'], correct:1, explain:'O Flagelo é uma estrutura filamentosa longa responsável pela locomoção da bactéria.', image:'img/estrutura_bacteriana_flagelo.jpg'}
     ]
   },
   {
     id:14, title:'Higiene e Sanitização', reward:'🧼 Protocolos de Limpeza',
     qs:[
-      {q:'Qual a finalidade da pré-lavagem na manipulação de alimentos?', a:['Aplicar sanitizante','Remover resíduos grandes','Eliminar detergente','Avaliar a higiene'], correct:1, explain:'A pré-lavagem serve para remover resíduos grandes.',},
-      {q:'Qual a finalidade da lavagem com detergente?', a:['Matar microrganismos','Remover sujeira aderida','Remover excesso de químico','Garantir a eficácia'], correct:1, explain:'A lavagem com detergente serve para tirar a sujeira aderida.', },
-      {q:'Qual a finalidade da sanitização?', a:['Remover resíduos','Eliminar detergente','Matar/reduzir microrganismos','Apenas enxaguar'], correct:2, explain:'A sanitização serve para matar ou reduzir microrganismos.',},
-      {q:'Por que é importante o enxágue após a aplicação do sanitizante?', a:['Para aplicar mais sanitizante','Para remover o excesso de químico','Para secar o equipamento','Para avaliar a limpeza'], correct:1, explain:'O enxágue após o sanitizante serve para remover o excesso de químico.',},
-      {q:'Qual a última etapa do programa de higiene e qual sua finalidade?', a:['Sanitização, para matar microrganismos','Lavagem, para tirar sujeira','Avaliação, para garantir a eficácia','Pré-lavagem, para remover resíduos'], correct:2, explain:'A avaliação é a última etapa para garantir a eficácia da higienização.',}
+      {q:'Qual a finalidade da pré-lavagem na manipulação de alimentos?', a:['Aplicar sanitizante','Remover resíduos grandes','Eliminar detergente','Avaliar a higiene'], correct:1, explain:'A pré-lavagem serve para remover resíduos grandes.', image:'img/higiene_pre_lavagem.jpg'},
+      {q:'Qual a finalidade da lavagem com detergente?', a:['Matar microrganismos','Remover sujeira aderida','Remover excesso de químico','Garantir a eficácia'], correct:1, explain:'A lavagem com detergente serve para tirar a sujeira aderida.', image:'img/higiene_lavagem.jpg'},
+      {q:'Qual a finalidade da sanitização?', a:['Remover resíduos','Eliminar detergente','Matar/reduzir microrganismos','Apenas enxaguar'], correct:2, explain:'A sanitização serve para matar ou reduzir microrganismos.', image:'img/higiene_sanitizacao.jpg'},
+      {q:'Por que é importante o enxágue após a aplicação do sanitizante?', a:['Para aplicar mais sanitizante','Para remover o excesso de químico','Para secar o equipamento','Para avaliar a limpeza'], correct:1, explain:'O enxágue após o sanitizante serve para remover o excesso de químico.', image:'img/higiene_enxague.jpg'},
+      {q:'Qual a última etapa do programa de higiene e qual sua finalidade?', a:['Sanitização, para matar microrganismos','Lavagem, para tirar sujeira','Avaliação, para garantir a eficácia','Pré-lavagem, para remover resíduos'], correct:2, explain:'A avaliação é a última etapa para garantir a eficácia da higienização.', image:'img/higiene_avaliacao.jpg'}
     ]
   },
   {
@@ -333,8 +342,8 @@
       {q:'Qual o agente causador da Cólera?', a:['Mycobacterium tuberculosis','Clostridium tetani','Vibrio cholerae','Escherichia coli'], correct:2, explain:'O agente causador da Cólera é o Vibrio cholerae.', image:'img/COLETRA.webp'},
       {q:'Quais são os sintomas da Tuberculose?', a:['Diarreia intensa e vômitos','Espasmos musculares e dificuldade para abrir a boca','Tosse persistente, febre, suores noturnos, perda de peso','Erupções cutâneas e dor de cabeça'], correct:2, explain:'Os sintomas da Tuberculose incluem tosse persistente, febre, suores noturnos e perda de peso.', image:'img/TUBERCULOSE.jpg'},
       {q:'Como o Tétano é transmitido?', a:['Pela ingestão de água contaminada','Pela via respiratória','Através de feridas contaminadas com esporos da bactéria','Pelo contato com animais infectados'], correct:2, explain:'O Tétano é transmitido através de feridas contaminadas com esporos da bactéria Clostridium tetani.', image:'img/TETANO.jpg'},
-      {q:'Qual o tratamento para a Cólera?', a:['Antibióticos específicos por longo período','Antitoxina e antibióticos','Reidratação e antibióticos','Cirurgia'], correct:2, explain:'O tratamento para a Cólera envolve reidratação e antibióticos.', },
-      {q:'Qual o agente causador do Tétano?', a:['Vibrio cholerae','Mycobacterium tuberculosis','Clostridium tetani','Staphylococcus aureus'], correct:2, explain:'O agente causador do Tétano é o Clostridium tetani.', }
+      {q:'Qual o tratamento para a Cólera?', a:['Antibióticos específicos por longo período','Antitoxina e antibióticos','Reidratação e antibióticos','Cirurgia'], correct:2, explain:'O tratamento para a Cólera envolve reidratação e antibióticos.', image:'img/colera_tratamento.jpg'},
+      {q:'Qual o agente causador do Tétano?', a:['Vibrio cholerae','Mycobacterium tuberculosis','Clostridium tetani','Staphylococcus aureus'], correct:2, explain:'O agente causador do Tétano é o Clostridium tetani.', image:'img/tetano_agente.jpg'}
     ]
   }
 ];
@@ -374,12 +383,12 @@
     const barbieStatus = document.getElementById('barbieStatus');
 
     const barbieImages = [
-      "img/Barbie_Quimica_Base_Jaleco_Branco.png", // Iniciante
-      "img/Barbie_Quimica_Jaleco_Azul.png", // Nível 1 (após 3 missões) - Exemplo, substitua
-      "img/Barbie_Quimica_Jaleco_Rosa.png", // Nível 2 (após 6 missões) - Exemplo, substitua
-      "img/Barbie_Quimica_Jaleco_Verde.png", // Nível 3 (após 9 missões) - Exemplo, substitua
-      "img/Barbie_Quimica_Jaleco_Roxo.png", // Nível 4 (após 12 missões) - Exemplo, substitua
-      "img/Barbie_Quimica_Traje_Protecao.png"  // Nível Final (após 15 missões) - Exemplo, substitua
+      "img/4d18359d57d625cdbe730f442d5061da.jpg", // Iniciante
+      "img/Barbie_Quimica_Jaleco_Azul.png", // Nível 1 (após 3 missões)
+      "img/Barbie_Quimica_Jaleco_Rosa.png", // Nível 2 (após 6 missões)
+      "img/Barbie_Quimica_Jaleco_Verde.png", // Nível 3 (após 9 missões)
+      "img/Barbie_Quimica_Jaleco_Roxo.png", // Nível 4 (após 12 missões)
+      "img/Barbie_Quimica_Traje_Protecao.png"  // Nível Final (após 15 missões)
     ];
 
     const barbieStatuses = [
@@ -610,7 +619,7 @@
           }
         } else {
           endText.textContent = 'Parabéns! Barbie salvou o micromundo e se tornou uma cientista lendária! Pontos totais: '+score+'. Cristais: '+cristais+'. Lentes: '+lentes;
-          startBtn.style.display = 'inline-block';
+          startBtn.style.display = 'inline-block'; // Corrigido para 'inline-block'
           startBtn.textContent = 'Jogar Novamente';
           startBtn.dataset.next = '1';
         }
