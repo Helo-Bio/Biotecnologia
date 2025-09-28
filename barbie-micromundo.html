@@ -89,7 +89,6 @@
       .question{font-size:1rem;}
       .answer{padding:var(--spacing-lg 1.2rem); min-height:55px;}
       .btn, .hint-btn{padding:var(--spacing-lg); font-size:0.95rem;}
-      .progress-bar{height:6px;}
       footer{padding:var(--spacing-sm); font-size:0.75rem;}
       .sidebar .mission{padding:var(--spacing-md); font-size:0.85rem; min-height:50px;}
     }
@@ -121,12 +120,12 @@
           <div class="mission locked" id="m7">7. Energia do Micromundo</div>
           <div class="mission locked" id="m8">8. A Célula Secreta</div>
           <div class="mission locked" id="m9">9. O Grande Desafio Viral</div>
-          <div class="mission locked" id="m10">10. Solução Final</div>
-          <div class="mission locked" id="m11">11. Reprodução Mágica</div>
-          <div class="mission locked" id="m12">12. Cuidados no Laboratório</div>
-          <div class="mission locked" id="m13">13. Fungos Patogênicos</div>
-          <div class="mission locked" id="m14">14. Metabolismo Avançado</div>
-          <div class="mission locked" id="m15">15. Aplicações Industriais</div>
+          <div class="mission locked" id="m10">10. Microbiologia Essencial</div>
+          <div class="mission locked" id="m11">11. Morfologia Bacteriana</div>
+          <div class="mission locked" id="m12">12. Gram Positivas vs. Negativas</div>
+          <div class="mission locked" id="m13">13. Estrutura Bacteriana</div>
+          <div class="mission locked" id="m14">14. Higiene e Sanitização</div>
+          <div class="mission locked" id="m15">15. Doenças Bacterianas</div>
 
           <div style="margin-top:var(--spacing-md)">
             <button class="btn" id="startBtn">Começar Missão 1</button>
@@ -202,55 +201,57 @@
     </div>
 
     <footer>Protótipo criado com conceitos de <span style="font-weight:700">fungos, microscopia e microbiologia</span>.
+    </footer>
+  </div>
 
   <script>
    const missions = [
   {
     id:1, title:'Reino dos Fungos', reward:'💎 Cristais de Quitina',
     qs:[
-      {q:'Qual é o principal polímero da parede celular dos fungos?', a:['Celulose','Quitina','Peptidoglicano','Quitossoma'], correct:1, explain:'Fungos têm parede celular de quitina.'},
-      {q:'Qual fungo é usado para produzir penicilina?', a:['Aspergillus','Penicillium notatum','Saccharomyces','Amanita'], correct:1, explain:'Penicillium notatum produz penicilina.'},
-      {q:'Candida albicans pode apresentar qual dimorfismo?', a:['Somente levedura','Levedura/filamentoso','Somente filamentos','Sem alteração'], correct:1, explain:'Candida é dimórfica: levedura em 37°C e bolor em 25°C.'}
+      {q:'Qual é o principal polímero da parede celular dos fungos?', a:['Celulose','Quitina','Peptidoglicano','Quitossoma'], correct:1, explain:'Fungos têm parede celular de quitina.', image:'img/polimeros_fungos_muito_simples_portugues.jpg'},
+      {q:'Qual fungo é usado para produzir penicilina?', a:['Aspergillus','Penicillium notatum','Saccharomyces','Amanita'], correct:1, explain:'Penicillium notatum produz penicilina.', image:'img/morfologia_penicilina_detalhada.jpg'},
+      {q:'Candida albicans pode apresentar qual dimorfismo?', a:['Somente levedura','Levedura/filamentoso','Somente filamentos','Sem alteração'], correct:1, explain:'Candida é dimórfica: levedura em 37°C e bolor em 25°C.', image:'img/candida_albicans_morfologia.jpg'}
     ]
   },
   {
     id:2, title:'Microscópio Encantado', reward:'🔬 Lentes Mágicas',
     qs:[
-      {q:'Qual ajuste usamos para focagem grosseira?', a:['Micrométrico','Macrométrico','Diafragma','Condensador'], correct:1, explain:'Ajuste macrométrico faz a focagem inicial.'},
-      {q:'Para usar objetiva de imersão, o que é necessário?', a:['Água','Óleo de cedro','Álcool 70%','Glicerol'], correct:1, explain:'Usa-se óleo de cedro para objetiva de imersão.'},
-      {q:'O que regula a intensidade luminosa no campo?', a:['Condensador','Revólver','Diafragma Iris','Platina'], correct:2, explain:'O Diafragma de Iris regula a intensidade.'}
+      {q:'Qual ajuste usamos para focagem grosseira?', a:['Micrométrico','Macrométrico','Diafragma','Condensador'], correct:1, explain:'Ajuste macrométrico faz a focagem inicial.', image:'img/microscopio_macro.png'},
+      {q:'Para usar objetiva de imersão, o que é necessário?', a:['Água','Óleo de cedro','Álcool 70%','Glicerol'], correct:1, explain:'Usa-se óleo de cedro para objetiva de imersão.', image:'img/oleoDeCedro.webp'},
+      {q:'O que regula a intensidade luminosa no campo?', a:['Condensador','Revólver','Diafragma Iris','Platina'], correct:2, explain:'O Diafragma de Iris regula a intensidade.', image:'img/microscopio.webp'}
     ]
   },
   {
     id:3, title:'Micromundo', reward:'✨ Pó de Micélio',
     qs:[
-      {q:'Leveduras são geralmente:', a:['Unicelulares','Pluricelulares','Procariontes','Autótrofas'], correct:0, explain:'Leveduras são unicelulares.'},
-      {q:'Fungos são, em geral, autótrofos ou heterótrofos?', a:['Autótrofos','Heterótrofos','Mixotrofos','Quimioautótrofos'], correct:1, explain:'Fungos são heterótrofos.'},
+      {q:'Leveduras são geralmente:', a:['Unicelulares','Pluricelulares','Procariontes','Autótrofas'], correct:0, explain:'Leveduras são unicelulares.', image:'img/Comparacao_Especies_Leveduras.jpg'},
+      {q:'Fungos são, em geral, autótrofos ou heterótrofos?', a:['Autótrofos','Heterótrofos','Mixotrofos','Quimioautótrofos'], correct:1, explain:'Fungos são heterótrofos.', image:'img/Estruturas_Reprodutivas_Fungos_PT.jpg'},
       {q:'Qual grupo realiza fotossíntese?', a:['Fungos','Algas','Leveduras','Protozoários'], correct:1, explain:'Algas fotossintetizam.'}
     ]
   },
   {
     id:4, title:'Caçadora de Micróbios', reward:'📚 Livros de Taxonomia',
     qs:[
-      {q:'As algas unicelulares pertencem a qual reino?', a:['Fungi','Monera','Protista','Animalia'], correct:2, explain:'Algas unicelulares estão no Reino Protista.'},
-      {q:'As arqueobactérias são procariontes ou eucariontes?', a:['Procariontes','Eucariontes','Nenhum','Ambos'], correct:0, explain:'Arqueobactérias são procariontes.'},
-      {q:'Cogumelos pertencem a qual reino?', a:['Plantae','Fungi','Protista','Monera'], correct:1, explain:'Cogumelos fazem parte do Reino Fungi.'}
+      {q:'As algas unicelulares pertencem a qual reino?', a:['Fungi','Monera','Protista','Animalia'], correct:2, explain:'Algas unicelulares estão no Reino Protista.', image:'img/reinos.png'},
+      {q:'As arqueobactérias são procariontes ou eucariontes?', a:['Procariontes','Eucariontes','Nenhum','Ambos'], correct:0, explain:'Arqueobactérias são procariontes.', image:'img/Tipos_Morfologicos_Arqueobacterias.jpg'},
+      {q:'Cogumelos pertencem a qual reino?', a:['Plantae','Fungi','Protista','Monera'], correct:1, explain:'Cogumelos fazem parte do Reino Fungi.', image:'img/ChatGPT Image 28 de set. de 2025, 19_21_09.png'}
     ]
   },
   {
     id:5, title:'Laboratório Encantado', reward:'🔧 Ferramentas de Microscopia',
     qs:[
-      {q:'Qual parte do microscópio segura a lâmina?', a:['Platina','Condensador','Base','Revólver'], correct:0, explain:'A platina mantém a lâmina fixa para observação.'},
-      {q:'Qual o nome do ajuste fino de foco?', a:['Macrométrico','Micrométrico','Iris','Charriot'], correct:1, explain:'O ajuste micrométrico faz a focalização fina.'},
-      {q:'Qual a função do condensador?', a:['Aumentar a imagem','Concentrar a luz','Segurar a ocular','Girar as objetivas'], correct:1, explain:'O condensador concentra/distribui a luz no campo visual.'}
+      {q:'Qual parte do microscópio segura a lâmina?', a:['Platina','Condensador','Base','Revólver'], correct:0, explain:'A platina mantém a lâmina fixa para observação.', image:'img/microscopio_macro.png'},
+      {q:'Qual o nome do ajuste fino de foco?', a:['Macrométrico','Micrométrico','Iris','Charriot'], correct:1, explain:'O ajuste micrométrico faz a focalização fina.', image:'img/microscopio_macro.png'},
+      {q:'Qual a função do condensador?', a:['Aumentar a imagem','Concentrar a luz','Segurar a ocular','Girar as objetivas'], correct:1, explain:'O condensador concentra/distribui a luz no campo visual.', image:'img/microscopio_macro.png'}
     ]
   },
   {
     id:6, title:'Fungos do Bem e do Mal', reward:'🍄 Medalhas Micóticas',
     qs:[
-      {q:'O Shimeji é um fungo...', a:['Comestível','Patogênico','Venenoso','Nenhum'], correct:0, explain:'O Shimeji é comestível.'},
-      {q:'A Amanita phalloides é...', a:['Comestível','Venenosa','Medicinal','Fermentadora'], correct:1, explain:'Amanita phalloides é venenosa.'},
-      {q:'O fungo usado para fermentar pão e cerveja é...', a:['Penicillium','Candida','Saccharomyces cerevisiae','Aspergillus'], correct:2, explain:'Saccharomyces cerevisiae realiza fermentação alcoólica.'}
+      {q:'O Shimeji é um fungo...', a:['Comestível','Patogênico','Venenoso','Nenhum'], correct:0, explain:'O Shimeji é comestível.', image:'img/shimeji.webp'},
+      {q:'A Amanita phalloides é...', a:['Comestível','Venenosa','Medicinal','Fermentadora'], correct:1, explain:'Amanita phalloides é venenosa.', image:'img/Amanita phalloides.webp'},
+      {q:'O fungo usado para fermentar pão e cerveja é...', a:['Penicillium','Candida','Saccharomyces cerevisiae','Aspergillus'], correct:2, explain:'Saccharomyces cerevisiae realiza fermentação alcoólica.', image:'img/Saccharomyces_cerevisiae_SEM.jpg'}
     ]
   },
   {
@@ -264,17 +265,76 @@
   {
     id:8, title:'A Célula Secreta', reward:'🧬 Códigos Genéticos',
     qs:[
-      {q:'Diferença principal procarionte vs eucarionte?', a:['Parede celular','Tamanho','Núcleo delimitado por membrana','Reprodução'], correct:2, explain:'Eucariontes têm núcleo e organelas; procariontes não.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Prokaryote_vs_eukaryote.svg/300px-Prokaryote_vs_eukaryote.svg.png'},
-      {q:'Bactérias e arqueias são?', a:['Eucariontes (complexas)','Procariontes (simples)','Multicelulares','Autótrofas obrigatórias'], correct:1, explain:'Procariontes têm DNA circular.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Bacterial_cell_structure.svg/300px-Bacterial_cell_structure.svg.png'},
-      {q:'Células de fungos/animais são?', a:['Procariontes','Eucariontes (com organelas)','Acelulares','Unicelulares sempre'], correct:1, explain:'Eucariontes têm núcleo e mitocôndrias.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Animal_cell_structure.svg/300px-Animal_cell_structure.svg.png'}
+      {q:'Diferença principal procarionte vs eucarionte?', a:['Parede celular','Tamanho','Núcleo delimitado por membrana','Reprodução'], correct:2, explain:'Eucariontes têm núcleo e organelas; procariontes não.'},
+      {q:'Bactérias e arqueias são?', a:['Eucariontes (complexas)','Procariontes (simples)','Multicelulares','Autótrofas obrigatórias'], correct:1, explain:'Procariontes têm DNA circular.'},
+      {q:'Células de fungos/animais são?', a:['Procariontes','Eucariontes (com organelas)','Acelulares','Unicelulares sempre'], correct:1, explain:'Eucariontes têm núcleo e mitocôndrias.', image: 'img/ChatGPT Image 28 de set. de 2025, 19_35_34.png'}
     ]
   },
   {
     id:9, title:'O Grande Desafio Viral', reward:'🦠 Antivírus Mágico',
     qs:[
-      {q:'Por que vírus não são considerados seres vivos?', a:['São muito pequenos','Não possuem genoma','Acelulares e dependem de hospedeiros','Não causam doenças'], correct:2, explain:'Vírus são acelulares e só se replicam dentro de células hospedeiras.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Virus_structure.svg/300px-Virus_structure.svg.png'},
-      {q:'Vírus possuem qual material genético?', a:['Somente DNA','Somente RNA','DNA ou RNA, nunca ambos','Não possuem material genético'], correct:2, explain:'Vírus podem ter DNA ou RNA, mas nunca os dois simultaneamente.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Virus_DNA_RNA.svg/300px-Virus_DNA_RNA.svg.png'},
-      {q:'Como vírus se replicam?', a:['Dividindo-se sozinhos','Usando células hospedeiras','Por fotossíntese','Por fermentação'], correct:1, explain:'Vírus utilizam células hospedeiras para replicar seu genoma.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Virus_lifecycle.svg/300px-Virus_lifecycle.svg.png'}
+      {q:'Por que vírus não são considerados seres vivos?', a:['São muito pequenos','Não possuem genoma','Acelulares e dependem de hospedeiros','Não causam doenças'], correct:2, explain:'Vírus são acelulares e só se replicam dentro de células hospedeiras.'},
+      {q:'Vírus possuem qual material genético?', a:['Somente DNA','Somente RNA','DNA ou RNA, nunca ambos','Não possuem material genético'], correct:2, explain:'Vírus podem ter DNA ou RNA, mas nunca os dois simultaneamente.',},
+      {q:'Como vírus se replicam?', a:['Dividindo-se sozinhos','Usando células hospedeiras','Por fotossíntese','Por fermentação'], correct:1, explain:'Vírus utilizam células hospedeiras para replicar seu genoma.'}
+    ]
+  },
+  {
+    id:10, title:'Microbiologia Essencial', reward:'🔬 Conhecimento Fundamental',
+    qs:[
+      {q:'O que a Microbiologia estuda?', a:['Apenas vírus','Apenas bactérias','Microrganismos, seres vivos microscópicos','Plantas e animais'], correct:2, explain:'A Microbiologia estuda microrganismos, seres vivos de dimensões microscópicas que não podem ser vistos a olho nu.'},
+      {q:'Qual a importância da Microbiologia para a Biotecnologia?', a:['Nenhuma','Fornece ferramentas para soluções inovadoras','Apenas para pesquisa básica','Somente para a indústria alimentícia'], correct:1, explain:'A Microbiologia fornece as ferramentas e o conhecimento essenciais para que a Biotecnologia crie soluções inovadoras para a saúde, o meio ambiente e a indústria.', },
+      {q:'Defina bactérias.', a:['Organismos pluricelulares','Organismos vivos unicelulares','Vírus complexos','Células sem núcleo'], correct:1, explain:'Bactérias são organismos vivos unicelulares.', },
+      {q:'O que são esporos bacterianos?', a:['Células reprodutivas','Um estado de resistência para sobreviver','Bactérias mortas','Fragmentos de DNA'], correct:1, explain:'Esporos bacterianos são um estado de resistência que algumas bactérias assumem para sobreviver.', }
+    ]
+  },
+  {
+    id:11, title:'Morfologia Bacteriana', reward:'✨ Formas da Vida',
+    qs:[
+      {q:'Bactérias com formato redondo são classificadas como:', a:['Bacilos','Vibriões','Cocos','Espirilos'], correct:2, explain:'Cocos são bactérias redondas.', image:'img/bac_morfo.jpg'},
+      {q:'Bactérias com formato em bastão são classificadas como:', a:['Cocos','Bacilos','Espiroquetas','Vibriões'], correct:1, explain:'Bacilos são bactérias em bastão.', image:'img/bac_morfo.jpg'},
+      {q:'Qual a classificação para bactérias em forma de vírgula?', a:['Espirilos','Cocos','Vibriões','Bacilos'], correct:2, explain:'Vibriões são bactérias em forma de vírgula.', image:'img/bac_morfo.jpg'},
+      {q:'Bactérias com espiral rígida são chamadas de:', a:['Espiroquetas','Cocos','Espirilos','Bacilos'], correct:2, explain:'Espirilos são bactérias com espiral rígida.', image:'img/bac_morfo.jpg'},
+      {q:'Bactérias com espiral flexível são chamadas de:', a:['Bacilos','Espirilos','Espiroquetas','Vibriões'], correct:2, explain:'Espiroquetas são bactérias com espiral flexível.', image:'img/bac_morfo.jpg'}
+    ]
+  },
+  {
+    id:12, title:'Gram Positivas vs. Negativas', reward:'🌈 Cores da Coloração',
+    qs:[
+      {q:'Qual a principal característica da parede celular de bactérias Gram-positivas?', a:['Fina de lipopolissacarídeos','Espessa de peptidoglicano','Ausente','Com ácidos teicoicos e membrana externa'], correct:1, explain:'Gram-positivas possuem parede celular espessa de peptidoglicano.', image:'img/Estrutura_Parede_Celular_Gram_Positivas.jpg'},
+      {q:'Bactérias Gram-negativas possuem membrana externa?', a:['Não, nunca','Sim, com lipopolissacarídeos (LPS)','Apenas em algumas espécies','Somente ácidos teicoicos'], correct:1, explain:'Gram-negativas têm membrana externa com lipopolissacarídeos (LPS).', image:'img/Estrutura_Parede_Celular_Gram_Negativas_Nova.jpg'},
+      {q:'Qual a cor das bactérias Gram-positivas após a coloração de Gram?', a:['Rosa/Vermelha','Incolor','Roxa/Azul','Verde'], correct:2, explain:'Gram-positivas coram em roxo/azul.', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Gram_stain_positive.jpg/320px-Gram_stain_positive.jpg'},
+      {q:'Qual a cor das bactérias Gram-negativas após a coloração de Gram?', a:['Roxa/Azul','Verde','Rosa/Vermelha','Incolor'], correct:2, explain:'Gram-negativas coram em rosa/vermelha.'},
+      {q:'Qual tipo de bactéria é geralmente mais resistente a antibióticos?', a:['Gram-positivas','Gram-negativas','Ambas igualmente','Nenhuma'], correct:1, explain:'Gram-negativas são mais resistentes a antibióticos devido à sua membrana externa.', }
+    ]
+  },
+  {
+    id:13, title:'Estrutura Bacteriana', reward:'🔬 Componentes Celulares',
+    qs:[
+      {q:'Qual estrutura rígida dá forma e proteção à célula bacteriana?', a:['Membrana Plasmática','Cápsula','Parede Celular','Flagelo'], correct:2, explain:'A Parede Celular é uma estrutura rígida que dá forma e proteção à célula, composta por peptidoglicano.',},
+      {q:'Qual organela é responsável pela síntese de proteínas?', a:['Plasmídeo','Nucleoide','Ribossomos','Mesossomo'], correct:2, explain:'Os Ribossomos são responsáveis pela síntese de proteínas.', },
+      {q:'Qual estrutura confere vantagens adaptativas, como resistência a antibióticos?', a:['Cápsula','Flagelo','Plasmídeo','Inclusões Citoplasmáticas'], correct:2, explain:'Plasmídeos são pequenas moléculas circulares de DNA extra que conferem vantagens adaptativas.', },
+      {q:'Qual a função da Membrana Plasmática em bactérias?', a:['Armazenar reservas','Locomoção','Controlar entrada e saída de substâncias e funções metabólicas','Proteger contra o sistema imunológico'], correct:2, explain:'A Membrana Plasmática controla a entrada e saída de substâncias e é responsável por funções metabólicas como a respiração celular.', },
+      {q:'Qual estrutura é responsável pela locomoção da bactéria?', a:['Cápsula','Flagelo','Pili','Parede Celular'], correct:1, explain:'O Flagelo é uma estrutura filamentosa longa responsável pela locomoção da bactéria.',}
+    ]
+  },
+  {
+    id:14, title:'Higiene e Sanitização', reward:'🧼 Protocolos de Limpeza',
+    qs:[
+      {q:'Qual a finalidade da pré-lavagem na manipulação de alimentos?', a:['Aplicar sanitizante','Remover resíduos grandes','Eliminar detergente','Avaliar a higiene'], correct:1, explain:'A pré-lavagem serve para remover resíduos grandes.',},
+      {q:'Qual a finalidade da lavagem com detergente?', a:['Matar microrganismos','Remover sujeira aderida','Remover excesso de químico','Garantir a eficácia'], correct:1, explain:'A lavagem com detergente serve para tirar a sujeira aderida.', },
+      {q:'Qual a finalidade da sanitização?', a:['Remover resíduos','Eliminar detergente','Matar/reduzir microrganismos','Apenas enxaguar'], correct:2, explain:'A sanitização serve para matar ou reduzir microrganismos.',},
+      {q:'Por que é importante o enxágue após a aplicação do sanitizante?', a:['Para aplicar mais sanitizante','Para remover o excesso de químico','Para secar o equipamento','Para avaliar a limpeza'], correct:1, explain:'O enxágue após o sanitizante serve para remover o excesso de químico.',},
+      {q:'Qual a última etapa do programa de higiene e qual sua finalidade?', a:['Sanitização, para matar microrganismos','Lavagem, para tirar sujeira','Avaliação, para garantir a eficácia','Pré-lavagem, para remover resíduos'], correct:2, explain:'A avaliação é a última etapa para garantir a eficácia da higienização.',}
+    ]
+  },
+  {
+    id:15, title:'Doenças Bacterianas', reward:'🛡️ Escudo Imunológico',
+    qs:[
+      {q:'Qual o agente causador da Cólera?', a:['Mycobacterium tuberculosis','Clostridium tetani','Vibrio cholerae','Escherichia coli'], correct:2, explain:'O agente causador da Cólera é o Vibrio cholerae.', image:'img/COLETRA.webp'},
+      {q:'Quais são os sintomas da Tuberculose?', a:['Diarreia intensa e vômitos','Espasmos musculares e dificuldade para abrir a boca','Tosse persistente, febre, suores noturnos, perda de peso','Erupções cutâneas e dor de cabeça'], correct:2, explain:'Os sintomas da Tuberculose incluem tosse persistente, febre, suores noturnos e perda de peso.', image:'img/TUBERCULOSE.jpg'},
+      {q:'Como o Tétano é transmitido?', a:['Pela ingestão de água contaminada','Pela via respiratória','Através de feridas contaminadas com esporos da bactéria','Pelo contato com animais infectados'], correct:2, explain:'O Tétano é transmitido através de feridas contaminadas com esporos da bactéria Clostridium tetani.', image:'img/TETANO.jpg'},
+      {q:'Qual o tratamento para a Cólera?', a:['Antibióticos específicos por longo período','Antitoxina e antibióticos','Reidratação e antibióticos','Cirurgia'], correct:2, explain:'O tratamento para a Cólera envolve reidratação e antibióticos.', },
+      {q:'Qual o agente causador do Tétano?', a:['Vibrio cholerae','Mycobacterium tuberculosis','Clostridium tetani','Staphylococcus aureus'], correct:2, explain:'O agente causador do Tétano é o Clostridium tetani.', }
     ]
   }
 ];
@@ -286,6 +346,7 @@
     let lentes = 0;
     let errors = 0;
     let answerSelected = false;
+    let completedMissions = 0;
 
     const startBtn = document.getElementById('startBtn');
     const questionArea = document.getElementById('questionArea');
@@ -303,9 +364,36 @@
     const endArea = document.getElementById('endArea');
     const endText = document.getElementById('endText');
     const restartBtn = document.getElementById('restartBtn');
+    const progressCount = document.getElementById('progressCount');
+    const progressFill = document.getElementById('progressFill');
+    const errorCountEl = document.getElementById('errorCount');
+    const hintBtn = document.getElementById('hintBtn');
+    const questionImage = document.getElementById('questionImage');
+    const sidebarBarbie = document.getElementById('sidebarBarbie');
+    const headerBarbie = document.getElementById('headerBarbie');
+    const barbieStatus = document.getElementById('barbieStatus');
+
+    const barbieImages = [
+      "img/Barbie_Quimica_Base_Jaleco_Branco.png", // Iniciante
+      "img/Barbie_Quimica_Jaleco_Azul.png", // Nível 1 (após 3 missões) - Exemplo, substitua
+      "img/Barbie_Quimica_Jaleco_Rosa.png", // Nível 2 (após 6 missões) - Exemplo, substitua
+      "img/Barbie_Quimica_Jaleco_Verde.png", // Nível 3 (após 9 missões) - Exemplo, substitua
+      "img/Barbie_Quimica_Jaleco_Roxo.png", // Nível 4 (após 12 missões) - Exemplo, substitua
+      "img/Barbie_Quimica_Traje_Protecao.png"  // Nível Final (após 15 missões) - Exemplo, substitua
+    ];
+
+    const barbieStatuses = [
+      "Nível Iniciante: Pronta para explorar!",
+      "Nível Aprendiz: Desvendando os segredos!",
+      "Nível Pesquisadora: Em busca de novas descobertas!",
+      "Nível Cientista: Dominando o micromundo!",
+      "Nível Mestra: Conhecimento ilimitado!",
+      "Nível Lendária: Salvadora do micromundo!"
+    ];
 
     // Inicial: next desabilitado
     nextBtn.disabled = true;
+    hintBtn.disabled = true;
 
     // startBtn agora é dinâmico: usa dataset.next quando presente
     startBtn.addEventListener('click', ()=>{
@@ -321,23 +409,70 @@
       nextQuestion();
     });
     restartBtn.addEventListener('click', ()=>{ location.reload(); });
+    hintBtn.addEventListener('click', useHint);
+
+    function updateProgressBar() {
+      progressCount.textContent = completedMissions;
+      const percentage = (completedMissions / missions.length) * 100;
+      progressFill.style.width = `${percentage}%`;
+    }
+
+    function updateBarbieEvolution() {
+      const level = Math.floor(completedMissions / 3); // Nova roupa a cada 3 missões
+      const imageIndex = Math.min(level, barbieImages.length - 1);
+      const statusIndex = Math.min(level, barbieStatuses.length - 1);
+
+      sidebarBarbie.classList.add('fade-out');
+      headerBarbie.classList.add('fade-out');
+
+      setTimeout(() => {
+        sidebarBarbie.src = barbieImages[imageIndex];
+        headerBarbie.src = barbieImages[imageIndex];
+        barbieStatus.textContent = barbieStatuses[statusIndex];
+        sidebarBarbie.classList.remove('fade-out');
+        headerBarbie.classList.remove('fade-out');
+        sidebarBarbie.classList.add('fade-in');
+        headerBarbie.classList.add('fade-in');
+      }, 500); // Tempo para a transição de fade
+    }
+
+    function setupMissionSelection() {
+      document.querySelectorAll('.mission').forEach((m, index) => {
+        m.removeEventListener('click', handleMissionClick); // Remove listeners antigos para evitar duplicação
+        if (index <= completedMissions) { // Desbloqueia missões já completadas e a próxima a ser jogada
+          m.classList.remove('locked');
+          m.addEventListener('click', handleMissionClick);
+        } else {
+          m.classList.add('locked');
+        }
+        m.classList.remove('active');
+      });
+    }
+
+    function handleMissionClick(event) {
+      const missionId = parseInt(event.target.id.replace('m', ''), 10);
+      if (!event.target.classList.contains('locked')) {
+        startMission(missionId);
+      }
+    }
 
     function startMission(n){
       // n é 1-based
       currentMission = n-1;
       qIndex = 0;
       errors = 0;
+      errorCountEl.textContent = errors;
       answerSelected = false;
       intro.classList.add('hidden');
       endArea.classList.add('hidden');
       questionArea.classList.remove('hidden');
       missionTitle.textContent = missions[currentMission].title;
       missNum.textContent = missions[currentMission].id;
-      // reset opacidade das missões e destacar a atual
-      document.querySelectorAll('.mission').forEach(m => m.style.opacity = 1);
-      const el = document.getElementById('m'+(currentMission+1));
-      if(el) el.style.opacity = 0.6;
-      // esconder botão principal enquanto missão ativa
+      
+      setupMissionSelection(); // Atualiza o estado de bloqueio/desbloqueio e listeners
+      const currentMissionEl = document.getElementById('m'+(currentMission+1));
+      if(currentMissionEl) currentMissionEl.classList.add('active');
+      
       startBtn.style.display = 'none';
       logEntry('Iniciada missão: '+missions[currentMission].title);
       showQuestion();
@@ -350,6 +485,17 @@
       answerSelected = false;
       nextBtn.disabled = true;
       feedback.textContent = '';
+      feedback.className = 'feedback-message hidden'; // Reset feedback style
+      hintBtn.disabled = (cristais === 0); // Habilita dica se tiver cristais
+
+      if (q.image) {
+        questionImage.src = q.image;
+        questionImage.classList.remove('hidden');
+      } else {
+        questionImage.classList.add('hidden');
+        questionImage.src = ''; // Limpa a imagem
+      }
+
       q.a.forEach((opt,i)=>{
         const btn = document.createElement('div');
         btn.className='answer';
@@ -360,24 +506,55 @@
     }
 
     function selectAnswer(i,el){
+      if (answerSelected) return; // Evita múltiplas seleções
+
       const q = missions[currentMission].qs[qIndex];
       const buttons = Array.from(document.querySelectorAll('.answer'));
-      buttons.forEach(b=>b.style.pointerEvents='none');
+      buttons.forEach(b=>b.style.pointerEvents='none'); // Desabilita cliques após seleção
+      
       answerSelected = true;
       nextBtn.disabled = false;
+      hintBtn.disabled = true; // Desabilita dica após seleção
+
       if(i===q.correct){
         el.classList.add('correct');
         score += 10; scoreEl.textContent = score;
         // rewards
-        if(currentMission===0) { cristais += 1; cristaisEl.textContent = cristais}
-        if(currentMission===1) { lentes += 1; lentesEl.textContent = lentes}
+        if(missions[currentMission].reward.includes('Cristais')) { cristais += 1; cristaisEl.textContent = cristais}
+        if(missions[currentMission].reward.includes('Lentes')) { lentes += 1; lentesEl.textContent = lentes}
         feedback.textContent = 'Correto! '+q.explain;
+        feedback.classList.remove('hidden');
+        feedback.classList.add('feedback-correct');
         logEntry('Acertou: '+q.q);
       } else {
         el.classList.add('wrong');
+        buttons[q.correct].classList.add('correct'); // Mostra a resposta correta
         errors += 1;
+        errorCountEl.textContent = errors;
         feedback.textContent = 'Errado. '+q.explain;
+        feedback.classList.remove('hidden');
+        feedback.classList.add('feedback-wrong');
         logEntry('Errou: '+q.q);
+      }
+    }
+
+    function useHint() {
+      if (cristais > 0 && !answerSelected) {
+        cristais--;
+        cristaisEl.textContent = cristais;
+        hintBtn.disabled = true; // Desabilita o botão de dica após o uso
+
+        const q = missions[currentMission].qs[qIndex];
+        const answers = Array.from(document.querySelectorAll('.answer'));
+        
+        // Remove uma resposta incorreta aleatoriamente
+        let incorrectAnswers = answers.filter((ans, idx) => idx !== q.correct && ans.style.opacity !== '0.3');
+        if (incorrectAnswers.length > 0) {
+          const randomIndex = Math.floor(Math.random() * incorrectAnswers.length);
+          incorrectAnswers[randomIndex].style.opacity = '0.3'; // Ou remova o elemento
+          incorrectAnswers[randomIndex].style.pointerEvents = 'none';
+        }
+        logEntry('Usou uma dica na pergunta: '+q.q);
       }
     }
 
@@ -385,39 +562,54 @@
       // evitar avançar sem resposta (fallback)
       if(!answerSelected){
         feedback.textContent = 'Selecione uma resposta antes de continuar.';
+        feedback.classList.remove('hidden');
+        feedback.classList.add('feedback-wrong'); // Pode ser um estilo neutro também
         return;
       }
 
       const mission = missions[currentMission];
-      qIndex +=1;
-
+      
       if(errors>=3){
         // mission failed
-        feedback.textContent = 'Você cometeu muitos erros. Reinicie a missão.';
         logEntry('Missão falhada: '+mission.title);
         questionArea.classList.add('hidden');
         endArea.classList.remove('hidden');
-        endText.textContent = 'Missão falhada. Tente novamente para ajudar Barbie a salvar o laboratório.';
+        endText.textContent = 'Você cometeu muitos erros nesta missão. Barbie precisa de mais foco! Tente novamente para ajudar Barbie a salvar o micromundo.';
         startBtn.style.display = 'inline-block';
-        startBtn.textContent = 'Tentar Novamente';
+        startBtn.textContent = 'Tentar Novamente a Missão ' + (currentMission + 1);
         startBtn.dataset.next = (currentMission+1).toString(); // retry same mission (1-based)
+        document.getElementById('m'+(currentMission+1)).classList.remove('active');
         return;
       }
+
+      qIndex +=1;
 
       if(qIndex>=mission.qs.length){
         // mission complete
         score += 5; scoreEl.textContent = score; // bonus
         logEntry('Missão concluída: '+mission.title);
+        document.getElementById('m'+(currentMission+1)).classList.add('completed');
+        document.getElementById('m'+(currentMission+1)).classList.remove('active');
+        completedMissions++;
+        updateProgressBar();
+        updateBarbieEvolution();
+
         questionArea.classList.add('hidden');
         endArea.classList.remove('hidden');
-        // start next or finish (AGUARDANDO clique do usuário)
+        
         if(currentMission < missions.length-1){
-          endText.textContent = 'Missão concluída! Clique em "Continuar" para iniciar a próxima missão.';
+          endText.textContent = `Missão ${mission.id} concluída! Você ganhou ${mission.reward}. Clique em "Continuar" para iniciar a próxima missão.`;
           startBtn.style.display = 'inline-block';
-          startBtn.textContent = 'Continuar';
+          startBtn.textContent = 'Continuar para Missão ' + (currentMission + 2);
           startBtn.dataset.next = (currentMission+2).toString(); // next mission 1-based
+          // Desbloqueia a próxima missão na sidebar
+          const nextMissionEl = document.getElementById('m'+(currentMission+2));
+          if (nextMissionEl) {
+            nextMissionEl.classList.remove('locked');
+            nextMissionEl.addEventListener('click', handleMissionClick);
+          }
         } else {
-          endText.textContent = 'Parabéns! Barbie salvou o laboratório. Pontos: '+score+'. Cristais: '+cristais+'. Lentes: '+lentes;
+          endText.textContent = 'Parabéns! Barbie salvou o micromundo e se tornou uma cientista lendária! Pontos totais: '+score+'. Cristais: '+cristais+'. Lentes: '+lentes;
           startBtn.style.display = 'inline-block';
           startBtn.textContent = 'Jogar Novamente';
           startBtn.dataset.next = '1';
@@ -431,6 +623,11 @@
       const time = new Date().toLocaleTimeString();
       log.innerHTML = `<div>[${time}] ${text}</div>`+log.innerHTML;
     }
+
+    // Inicialização
+    updateProgressBar();
+    updateBarbieEvolution();
+    setupMissionSelection(); // Configura a seleção de missões ao carregar a página
   </script>
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ff69b4">
